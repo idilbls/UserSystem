@@ -1,0 +1,5 @@
+01/25/2022 22:38:48 User not found!
+Abp.UI.UserFriendlyException: User not found!
+   at UserSystem.DataAccess.Concrete.UserDAL.DeleteAsync(User user) in C:\Users\idil.bolukbasi\Desktop\UserSystem\UserSystem.DataAccess\Concrete\UserDAL.cs:line 49
+   at UserSystem.BusinessLogic.Service.UserBLL.DeleteAsync(Int32 id) in C:\Users\idil.bolukbasi\Desktop\UserSystem\UserSystem.BusinessLogic\Service\UserBLL.cs:line 33
+   at UserSystem.API.Controllers.UserController.DeleteAsync(Int32 id) in C:\Users\idil.bolukbasi\Desktop\UserSystem\UserSystem.API\Controllers\UserController.cs:line 92
