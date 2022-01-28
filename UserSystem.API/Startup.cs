@@ -30,7 +30,7 @@ namespace UserSystem
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(Startup));
-            services.AddDbContext<UserSystemDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.AddDbContext<UserSystemDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
             services.AddScoped<IUserDAL, UserDAL>();
             services.AddScoped<IUserBLL, UserBLL>();
             services.AddCors(options =>

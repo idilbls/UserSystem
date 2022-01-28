@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UserSystem.Core.Context;
 using UserSystem.DataAccess.Abstract;
@@ -17,6 +18,7 @@ namespace UserSystem.DataAccess.Concrete
         public UserDAL(UserSystemDbContext context)
         {
             _context = context;
+            _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
         public async Task<User> AddUserAsync(User user)
@@ -39,7 +41,10 @@ namespace UserSystem.DataAccess.Concrete
         {
             try
             {
-                _context.Users.Remove(user);
+                var userResult = await _context.Users.FindAsync(user.Id);
+                userResult.IsDelete = user.IsDelete = true;
+                userResult.DeletedTime = user.DeletedTime = DateTime.Now;
+                _context.Users.Update(userResult);
                 await _context.SaveChangesAsync();
                 return true;
             }
@@ -54,7 +59,7 @@ namespace UserSystem.DataAccess.Concrete
         {
             try
             {
-                var users = await _context.Users.ToListAsync();
+                var users = await _context.Users.AsNoTracking().Where(x => x.IsDelete == false).ToListAsync();
                 return users;
             }
             catch (Exception ex)
