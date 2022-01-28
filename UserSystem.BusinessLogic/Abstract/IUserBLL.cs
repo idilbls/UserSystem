@@ -6,7 +6,7 @@ namespace UserSystem.BusinessLogic.Abstract
 {
     public interface IUserBLL
     {
-        Task<IList<UserDto>> GetAllUsersAsync();
+        Task<UserListDto> GetAllUsersAsync(int currentPage);
         Task<UserDto> GetUserByIdAsync(int id);
         Task<UserDto> AddUserAsync(UserDto user);
         Task<UserDto> UpdateAsync(UserDto user);

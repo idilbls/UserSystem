@@ -23,17 +23,17 @@ namespace UserSystem.API.Controllers
         }
 
         [HttpGet("get_all")]
-        public async Task<Response<IList<UserDto>>> GetAllUsers()
+        public async Task<Response<UserListDto>> GetAllUsers([FromQuery]int currentPage)
         {
             try
             {
-                var responseDto =  await _userBLL.GetAllUsersAsync();
-                return await Response<IList<UserDto>>.Run(responseDto);
+                var responseDto =  await _userBLL.GetAllUsersAsync(currentPage);
+                return await Response<UserListDto>.Run(responseDto);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, ex.Message);
-                return await Response<IList<UserDto>>.Catch(new ResponseError { Message = ex.Message });
+                return await Response<UserListDto>.Catch(new ResponseError { Message = ex.Message });
             }
         }
 
