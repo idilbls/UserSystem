@@ -33,9 +33,6 @@ class Table extends Component {
             {this.props.obj.militaryStatus}  
           </td> 
           <td>  
-            {this.props.obj.dateOfRegistration}  
-          </td>   
-          <td>  
           <Link to={"/edit/"+this.props.obj.id} className="btn btn-success">Edit</Link>  
           </td>  
           <td>  

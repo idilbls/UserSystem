@@ -12,9 +12,9 @@ export class UserList extends Component{
       
       componentDidUpdate() {
         const url = "https://localhost:44388/api/user/get_all";
-        const response =  axios.post(url)
+        const response =  axios.get(url,{ params: { currentPage: 1 } })
         .then(response=>{
-            this.setState({users: response.data});
+            this.setState({users: response.data.result.users});
         })
         .catch(function (error){
             console.log(error);
@@ -23,9 +23,9 @@ export class UserList extends Component{
 
  componentDidMount(){
     const url = "https://localhost:44388/api/user/get_all";
-    const response =  axios.post(url)
+    const response =  axios.get(url,{ params: { currentPage: 1 } })
     .then(response=>{
-        this.setState({users: response.data});
+        this.setState({users: response.data.result.users});
     })
     .catch(function (error){
         console.log(error);
@@ -50,8 +50,7 @@ tabRow(){
                 <th>Surname</th>  
                 <th>Description</th>  
                 <th>MilitaryStatus</th> 
-                <th>Date of Registration</th> 
-                <th colSpan="4">Action</th>  
+              <th colSpan="4">Action</th>  
               </tr>  
             </thead>  
             <tbody>  

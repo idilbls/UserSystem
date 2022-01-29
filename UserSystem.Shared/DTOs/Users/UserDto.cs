@@ -13,6 +13,6 @@ namespace UserSystem.Shared.DTOs.Users
         [MaxLength(100)]
         public string Surname { get; set; }
         public string Description { get; set; }
-        public MilitaryStatus MilitaryStatus { get; set; }
+        public int MilitaryStatus { get; set; }
     }
 }

@@ -2,7 +2,13 @@ import React from 'react';
 import axios from 'axios';  
 import '../User/AddUser.css'  
 import { Container, Col, Form, Row, FormGroup, Label, Input, Button } from 'reactstrap';  
+const MilitaryStatus = {
+  Exempted : 1,
+  Postponed: 2,
+  Done:3
+};
 class AddUser extends React.Component{  
+
 constructor(props){  
   super(props)  
   this.createUser = this.createUser.bind(this);  
@@ -10,7 +16,7 @@ constructor(props){
     name:'',  
     surname:'', 
     description:'', 
-    militaryStatus:''
+    militaryStatus: 0
   }  
 }   
 async createUser(){  
@@ -21,7 +27,7 @@ await  axios.post('https://localhost:44388/api/user/add/',
     description: this.state.description,
     militaryStatus:  this.state.militaryStatus})  
 .then(json => {  
-if(json.data.Status==='Success'){  
+if(json.data.StatusCode===200){  
   console.log(json.data.Status);  
   alert("Data Save Successfully");  
 this.props.history.push('/UserList')  
@@ -75,13 +81,13 @@ return (
         <FormGroup row className="p-4 pb-0">  
           <Label for="description" sm={2}>Description</Label>  
           <Col sm={10}>  
-            <Input type="text" name="description" onChange={this.handleChange} value={this.state.email} placeholder="Enter Email" required/>  
+            <Input type="text" name="description" onChange={this.handleChange} value={this.state.email} placeholder="Enter Description" required/>  
           </Col>  
         </FormGroup>  
         <FormGroup row className="p-4 pb-0">  
           <Label for="militaryStatus" sm={2}>Military Status</Label>  
           <Col sm={10}>  
-            <Input type="text" name="militaryStatus" onChange={this.handleChange} value={this.state.phoneNumber} placeholder="Enter Phone Number" required/>  
+            <Input type="text" name="militaryStatus" onChange={this.handleChange} value={this.state.phoneNumber} placeholder="Enter Military Status" required/>  
           </Col>  
         </FormGroup>   
       </Col>  

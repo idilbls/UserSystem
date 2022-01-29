@@ -7,10 +7,9 @@ export class User extends Component{
     }
     componentDidMount(){  
         debugger;  
-        let query = {currentPage:1};
-        axios.get('http://localhost:44388/api/User/get_all?currentPage=' + query)  
+        axios.get('http://localhost:44388/api/User/get_all',{ params: { currentPage: 1 } })  
           .then(response => {  
-            this.setState({ deps: response.data });  
+            this.setState({ deps: response.data.result.users });  
             debugger;  
     
           })  
@@ -36,7 +35,6 @@ export class User extends Component{
                 <th>Surname</th>  
                 <th>Description</th>  
                 <th>Military Status</th>  
-                <th>Date Of Registration</th>  
                 <th colSpan="4">Action</th>  
               </tr>  
             </thead>  
