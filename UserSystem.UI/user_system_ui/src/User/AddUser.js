@@ -87,7 +87,7 @@ return (
         <FormGroup row className="p-4 pb-0">  
           <Label for="militaryStatus" sm={2}>Military Status</Label>  
           <Col sm={10}>  
-            <Input type="text" name="militaryStatus" onChange={this.handleChange} value={this.state.phoneNumber} placeholder="Enter Military Status" required/>  
+            <Input type="text" name="militaryStatus" onChange={this.handleChange} value={this.state.militaryStatus} placeholder="Enter Military Status( 1:Exempted, 2:Postponed, 3:Done )" required/>  
           </Col>  
         </FormGroup>   
       </Col>  
@@ -96,10 +96,11 @@ return (
           <Col sm={5}>  
           </Col>  
           <Col sm={1}>  
-          <Button type="submit" color="success">Submit</Button>{' '} 
+          <Button variant="contained" type="submit" color="success">Submit</Button>
+
           </Col>  
           <Col sm={1}>  
-            <Button color="danger">Cancel</Button>{' '}  
+            <Button variant="contained" color="danger">Cancel</Button>
           </Col>  
           <Col sm={5}>  
           </Col>  

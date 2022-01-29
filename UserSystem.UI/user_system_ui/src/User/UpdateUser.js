@@ -111,10 +111,10 @@ class Edit extends React.Component {
                             <Col sm={5}>  
                             </Col>  
                             <Col sm={1}>  
-                          <Button type="submit" color="success">Submit</Button>{' '}  
+                            <Button variant="contained" type="submit" color="success">Submit</Button> 
                             </Col>  
                             <Col sm={1}>  
-                                <Button color="danger">Cancel</Button>{' '}  
+                            <Button variant="contained" color="danger">Cancel</Button>
                             </Col>  
                             <Col sm={5}>  
                             </Col>  
